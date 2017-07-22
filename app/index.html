@@ -1,0 +1,68 @@
+<!doctype html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fancy Map</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/topojson.v0.min.js"></script>
+         <link rel="icon" href="assets/icon.png">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="https://github.com/andyhass/generator-vanillajs/">Generator</a></li>
+                </ul>
+                <h3 class="text-muted">Custom Map componet</h3>
+            </div>
+
+            <div class="jumbotron">
+                <img class="logo" src="assets/icon.png">
+
+                <h1>Fancy map</h1>
+                <p class="lead">Stuffed stuff.</p>
+                
+            </div>
+            <div class="palette body-top"  >
+                <img id="palette" class="icon" src="assets/icon.png">
+                <form class="form" action="/action_page.php" >
+                    <span>Style</span>
+                    <span class="subtitle">CHANGE THE VISUALIZATION</span>
+                    <div class="form-group">
+                        <label for="fill">FILL</label>
+                        <input type="text" class="form-control" id="fill">
+                    </div>
+                    <div class="form-group">
+                        <label for="stroke">STROKE</label>
+                        <input type="password" class="form-control" id="stroke">
+                    </div>
+                    <div class="form-group">
+                        <label for="blending">BLENDING</label>
+                        <input type="password" class="form-control" id="blending">
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="labels" id="labels">LABELS</label>
+                    </div>                    
+                </form>
+            </div>
+            <svg class="custom-map"></svg>
+
+            <div class="footer">
+                 <p>Marta García 2017</p>
+            </div>
+
+        </div>
+ 
+</script>
+        <script src="bower_components/jquery/jquery.min.js"></script>
+        <script src="scripts/main.js"></script>
+</body>
+</html>
