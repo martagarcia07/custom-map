@@ -28,7 +28,8 @@
 	setMap();
 
 	function setStrokeNum(){
-		d3.selectAll("path").style("stroke-width", stNum)
+		d3.selectAll("path").style("stroke-width", stNum);
+		strokeWidth=event.target.value;
 	}
 	function stNum(d){
 		if (d.geometry.type=="Point"){		  		
@@ -43,8 +44,8 @@
 
 	}
 	function setFillNum(){
-		d3.selectAll("path").style("fillOpacity", event.target.value)
-
+		d3.selectAll("path").style("width", event.target.value)
+		fillWidth=event.target.value;
 	}
 	function fillStroke(d){
 		if (d.geometry.type=="Point"){		  		
@@ -66,8 +67,10 @@
 		}
 	}
 	function setFillNum(){
-		debugger;
-		d3.selectAll("path").style("fillOpacity", event.target.value)
+		fillWidth=event.target.value;
+		d3.selectAll("path").style("cx", event.target.value);
+		d3.selectAll("path").style("cy", event.target.value);
+		d3.selectAll("path").style("r", event.target.value);
 
 	}
 	function setStroke(){
@@ -89,10 +92,6 @@
 		
 	}
 
-	function dropdown(){
-		debugger;
-
-	}
 	function tooglePalette(event){
 		if (event.target.parentElement.style.width=="300px"){
 			event.target.parentElement.style.width="20px";
@@ -167,7 +166,7 @@
 			        .attr('d', path)
 			        .attr('vector-effect', 'non-scaling-stroke')
 			        .style('fill', fillFn)
-			        .style('fillOpacity', fillWidthFn)
+			        .style('size', fillWidthFn)
 			        .style('stroke', strokeFn)
 			        .style('stroke-width', widthFn)
 			        .on('mouseover', mouseover)
