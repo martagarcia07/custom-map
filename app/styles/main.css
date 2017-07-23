@@ -92,35 +92,6 @@ body {
 }
 
 
- 
-.background {
-  fill: #eee;
-  pointer-events: all;
-}
-
-.map-layer {
-  fill: #fff;
-  stroke: #aaa;
-}
-
-.effect-layer{
-  pointer-events:none;
-}
-
-text{
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
-}
-
-text.big-text{
-  font-size: 30px;
-  font-weight: 400;
-}
-
-.effect-layer text, text.dummy-text{
-  font-size: 12px;
-}
-
 .custom-map{
   width:100%;
 }
@@ -184,3 +155,66 @@ label{
   font-size: 9px;
   display:block;
 }
+.color{
+  width:80px;
+  height: 20px;
+}
+.white{
+  background-color: white;
+}
+.black{
+  background-color: black;
+  color:white;
+}
+.red{
+  background-color: red;
+}
+.green{
+  background-color: green;
+}
+.blue{
+  background-color: blue;
+}
+.yellow{
+  background-color: yellow;
+}
+.orange{
+  background-color: orange;
+}
+.pink{
+  background-color: pink;
+}
+
+.num-input{
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+}
+.dropdown-plus{
+  display:inline-block;
+}
+
+/***************************************************************/
+.background {
+  fill: #eee;
+  pointer-events: all;
+}
+.map-layer {
+  fill: #fff;
+  stroke: #aaa;
+}
+.effect-layer{
+  pointer-events:none;
+}
+text{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+text.big-text{
+  font-size: 30px;
+  font-weight: 400;
+}
+.effect-layer text, text.dummy-text{
+  font-size: 12px;
+}
+

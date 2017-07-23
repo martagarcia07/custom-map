@@ -15,23 +15,27 @@ To bootstrap your local app.
 grunt test
 For unittesting.
 
-Example:
-
-yo vanillajs:module FunkyMusic
-Produces app/scripts/modules/FunkyMusic.js:
-
-Bower Components
+Click on the map top left icon to display the styling palette and hide it,
+the palette info modifications will upload automatically the map with the styling changes.
 
 The following packages are always installed by the app generator:
-
-/////////////////////
 
 
 Pre-requisites
 
+https://geojson-maps.ash.ms/ 
+Base map for country borders
+
+Bower Components
+
 Install generator-vanillajs:
 
 npm install -g generator-vanillajs
+
+Example:
+
+yo vanillajs:module FunkyMusic
+Produces app/scripts/modules/FunkyMusic.js:
 
 ``A Yeoman for an old school javascript web app. Word to your mother.
 No AMD. No frameworks. Just simple Javascript.``
@@ -41,7 +45,12 @@ Bootstrap
 QUnit
 JQuery
 Testing
+d3.js 
 
-Fancy icon designed with open source linux magic & gimp.
+Fancy icon designed with gimp.
 
 Running grunt test will open the QUnit test page.
+
+Credits:
+	d3 example
+	https://gist.github.com/kristw/7fbf031e3205a8a453a8

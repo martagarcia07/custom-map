@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,11 @@
         <link rel="stylesheet" href="styles/main.css">
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="http://d3js.org/topojson.v0.min.js"></script>
+        
+        <script src="https://d3js.org/d3-array.v1.min.js"></script>
+        <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
          <link rel="icon" href="assets/icon.png">
 
     </head>
@@ -38,30 +44,65 @@
                     <span class="subtitle">CHANGE THE VISUALIZATION</span>
                     <div class="form-group">
                         <label for="fill">FILL</label>
-                        <input type="text" class="form-control" id="fill">
+                        <div class="dropdown-plus">
+                            <input type="number" class="num-input form-control" id="fill-num" value=1>
+                            
+
+                            <select id="fill-color"  class=" form-control">
+                                <option value="white"><label class="color white" >white</label></option>
+                                <option value="black"><label class="color black">black</label></option>
+                                <option value="red"><label class="color red">red</label></option>
+                                <option value="green"><label class="color green">green</label></option>
+                                <option value="blue"><label class="color blue">blue</label></option>
+                                <option value="yellow"><label class="color yellow">yellow</label></option>
+                                <option value="orange"><label class="color orange">orange</label></option>
+                                <option value="pink"><label class="color pink">pink</label></option>
+                            </select>
+ 
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="stroke">STROKE</label>
-                        <input type="password" class="form-control" id="stroke">
+                        <div class="dropdown-plus">
+                            <input type="number" class="num-input form-control" id="stroke" value=1>
+                            <select id="stroke-color"  class=" form-control">
+                                <option value="white"><label class="color white" >white</label></option>
+                                <option value="black" selected><label class="color black">black</label></option>
+                                <option value="red"><label class="color red">red</label></option>
+                                <option value="green"><label class="color green">green</label></option>
+                                <option value="blue"><label class="color blue">blue</label></option>
+                                <option value="yellow"><label class="color yellow">yellow</label></option>
+                                <option value="orange"><label class="color orange">orange</label></option>
+                                <option value="pink"><label class="color pink">pink</label></option>
+                            </select>                            
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="blending">BLENDING</label>
-                        <input type="password" class="form-control" id="blending">
+                            <select  id="blending" class=" form-control">
+                                <option selected value="multiply"><label class="color" >multiply</label></option>
+                                <option value="simple" selected><label class="color">simple</label></option>
+                            </select>                            
                     </div>
                     <div class="radio">
-                        <label><input type="radio" name="labels" id="labels">LABELS</label>
+                        <input type="checkbox" name="labels" id="labels" ><label>LABELS</label>
                     </div>                    
                 </form>
             </div>
-            <svg class="custom-map"></svg>
 
+
+
+            <div id="map">
+            </div>
+            <svg class="custom-map" id="custom-map"></svg>
             <div class="footer">
                  <p>Marta García 2017</p>
             </div>
 
         </div>
  
-</script>
         <script src="bower_components/jquery/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
 </body>
