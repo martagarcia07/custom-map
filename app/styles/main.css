@@ -186,7 +186,7 @@ label{
 }
 
 .num-input{
-  width: 50px;
+  width: 100px;
   height: 20px;
   font-size: 10px;
 }
@@ -194,7 +194,6 @@ label{
   display:inline-block;
 }
 
-/***************************************************************/
 .background {
   fill: #eee;
   pointer-events: all;

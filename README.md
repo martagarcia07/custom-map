@@ -1,51 +1,49 @@
 Custom Map Componet for CARTO
-The component will let users change as many attributes of a data layer as possible (for example the fill and stroke of the geometries, the size, etc.). The data layer should be refreshed when any change happens.
+	The component will let users change as many attributes of a data layer as possible (for example the fill and stroke of the geometries, the size, etc.). The data layer should be refreshed when any change happens.
 
 
 Usage
 
-For development purpose:
+	For development purpose:
 
-bower install & npm install
-Install needed components.
+		bower install & npm install
+		Install needed components.
 
-grunt server
-To bootstrap your local app.
+		grunt server
+		To bootstrap your local app.
 
-grunt test
-For unittesting.
+		grunt test
+		For unittesting.
 
-Click on the map top left icon to display the styling palette and hide it,
-the palette info modifications will upload automatically the map with the styling changes.
+		Click on the map top left icon to display the styling palette and hide it,the palette info modifications will upload automatically the map with the styling changes.
 
 The following packages are always installed by the app generator:
 
 
-Pre-requisites
+	Pre-requisites
 
-https://geojson-maps.ash.ms/ 
-Base map for country borders
+		https://geojson-maps.ash.ms/ 
+		Base map for country borders
 
-Bower Components
+		Bower Components
 
-Install generator-vanillajs:
+		Install generator-vanillajs:
 
-npm install -g generator-vanillajs
+		npm install -g generator-vanillajs
 
-Example:
+		Example:
 
-yo vanillajs:module FunkyMusic
-Produces app/scripts/modules/FunkyMusic.js:
+		yo vanillajs:module FunkyMusic
+		Produces app/scripts/modules/FunkyMusic.js:
 
-``A Yeoman for an old school javascript web app. Word to your mother.
-No AMD. No frameworks. Just simple Javascript.``
+		``A Yeoman for an old school javascript web app. Word to your mother.No AMD. No frameworks. Just simple Javascript.``
 
 
-Bootstrap
-QUnit
-JQuery
-Testing
-d3.js 
+		Bootstrap
+		QUnit
+		JQuery
+		Testing
+		d3.js 
 
 Fancy icon designed with gimp.
 
