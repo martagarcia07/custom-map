@@ -4,15 +4,18 @@ var fillWidth=1;
 var fillColor="white";
 var blendy="multiply";
 var labels = false;
-
+var data;
 
 var selectedColor ;
-var scale=1300;
+var scale=1400;
+var scaleWheel=1;
+var scalePoint=1500;
+
 var located=[40.416879, -3.703351];
 var carto='/assets/cartodb-query.geojson'
 var geojson	='/assets/custom.geo.json'
 var width = 700,
-    height = 420,
+    height = 470,
     centered;
  
 function nameFn(d){

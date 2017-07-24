@@ -9,8 +9,19 @@ function setEvents(){
 }
 
 function setFillNum(){
-	scale=scale+event.target.value*10;
-	//setMap();
+	debugger;
+svg.selectAll('rect')
+    .data(data)
+    .enter().append('rect')
+    .style('r', function (d) { 
+		if (d.geometry.type!="MultiPolygon" && d.geometry.type!="Polygon"){
+    		debugger;
+    		return "1px";
+    	}
+    })
+    .attr('width', 10) 
+    .attr('height', 10);
+
 }
 // on icon click expand palette
 function tooglePalette(event){

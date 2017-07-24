@@ -4,9 +4,9 @@ function setMap() {
 		//concatenate both files to display points and map borders
 		d3.json(carto, function(error2, mapData2) {
 		
-	  	    var tmp=mapData.features;
-	  	    tmp = tmp.concat(mapData2.features);
-	  	    mapData['features']=tmp;
+	  	    data=mapData.features;
+	  	    data = data.concat(mapData2.features);
+	  	    mapData['features']=data;
 		    var features = mapData.features;
 		    // Update color scale domain based on data
 		    color.domain([0, d3.max(features, nameLength)]);
@@ -19,7 +19,6 @@ function setMap() {
 		        .style('fill', fillFn)
 		        .style('size', fillWidthFn)
 		        .style('stroke', strokeFn)
-		        .style('stroke-width', widthFn)
 		        .on('mouseover', mouseover)
 		        .on('mouseout', mouseout)
 	  			.on('wheel', wheel)
