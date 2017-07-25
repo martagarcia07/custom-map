@@ -5,7 +5,7 @@ var fillColor="white";
 var blendy="multiply";
 var labels = false;
 var data;
-var radius = 1.5;
+var radius = 1;
 
 var selectedColor ;
 var scale=1400;
@@ -20,15 +20,15 @@ var width = 700,
     centered;
  
 function nameFn(d){
-  return d && d.properties ? d.properties.name : null;
+	return d && d.properties ? d.properties.name : null;
 }
 // Get province name length
 function nameLength(d){
-  var n = nameFn(d);
-  return n ? n.length : 0;
+  	var n = nameFn(d);
+  	return n ? n.length : 0;
 }
 var color = d3.scale.linear()
-  .domain([1, 20])
-  .clamp(true)
-  .range(['#fff', '#000000']);	
+  	.domain([1, 20])
+  	.clamp(true)
+  	.range(['#fff', '#000000']);	
   

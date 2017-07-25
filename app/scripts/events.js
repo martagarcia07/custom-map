@@ -9,14 +9,14 @@ function setEvents(){
 }
 
 function setFillNum(){
-	debugger;
-	radius = 1+event.target.value/10;
-var path = d3.geo.path()
-  .projection(projection)
-  .pointRadius(radius);
+	//0.5 scale radius
+	radius = event.target.value/2;
+	var path = d3.geo.path()
+  		.projection(projection)
+  		.pointRadius(radius);
 
-d3.geo.path().projection(projection);
-      d3.selectAll("path").attr("d", path);  
+	d3.geo.path().projection(projection);
+    d3.selectAll("path").attr("d", path);  
 
 }
 // on icon click expand palette

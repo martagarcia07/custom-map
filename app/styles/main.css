@@ -186,9 +186,10 @@ label{
 }
 
 .num-input{
-  width: 100px;
-  height: 20px;
+  width: 35%;
+  height: 35px;
   font-size: 10px;
+  margin-right:5%;
 }
 .dropdown-plus{
   display:inline-block;
