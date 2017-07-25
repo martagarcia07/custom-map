@@ -105,12 +105,17 @@ function clicked(d) {
 function wheel(d) {
 	event.preventDefault();
 	event.stopPropagation();
-	    var x, y, k;
+	  console.log(event.deltaY)  
+    var x, y, k;
     // Compute centroid of the selected path
     if (d ) {
+      console.log(d)
+      console.log(d.geometry.coordinates)
       var centroid = path.centroid(d);
       x = centroid[0];
       y = centroid[1];
+      console.log(x,y)
+      
       if (event.deltaY >0 && scaleWheel > 1){
       	scaleWheel = scaleWheel-1;
       }else if (event.deltaY >0 && scaleWheel <= 1 && scaleWheel >0.1){
@@ -120,8 +125,11 @@ function wheel(d) {
       }
       centered = d;
     } else {
-      x = event.offsetX;
-      y = event.offsetY;
+
+      debugger
+      x = event.offsetX - ( event.target.getAttribute("width")/2);
+      y=  event.offsetY - ( event.target.getAttribute("height")/2);
+ 
       if (event.deltaY >0 && scaleWheel > 1){
       	scaleWheel = scaleWheel-1;
       }else if (event.deltaY >0 && scaleWheel <= 1 && scaleWheel >0.1){
@@ -129,13 +137,19 @@ function wheel(d) {
       }else if (event.deltaY < 0 ){
       	scaleWheel = scaleWheel+1;
       }
-   	  centered = x,y;
+   	  //centered = x,y;
     }
 	  // Zoom
-    g.transition()
-	    .duration(750)
+   
+  /*
+  g.transition()
+	    .duration(750) // rotate
 	    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scaleWheel + ')translate(' + -x + ',' + -y + ')');
+      */
 
+  g.transition()
+      .duration(750) // rotate
+      .attr('transform', 'translate(' + x + ','+ y + ')scale(' + scaleWheel + ')');      
 }
 function mouseover(d){
   // Highlight hovered province
