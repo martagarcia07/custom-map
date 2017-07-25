@@ -10,17 +10,13 @@ function setEvents(){
 
 function setFillNum(){
 	debugger;
-svg.selectAll('rect')
-    .data(data)
-    .enter().append('rect')
-    .style('r', function (d) { 
-		if (d.geometry.type!="MultiPolygon" && d.geometry.type!="Polygon"){
-    		debugger;
-    		return "1px";
-    	}
-    })
-    .attr('width', 10) 
-    .attr('height', 10);
+	radius = 1+event.target.value/10;
+var path = d3.geo.path()
+  .projection(projection)
+  .pointRadius(radius);
+
+d3.geo.path().projection(projection);
+      d3.selectAll("path").attr("d", path);  
 
 }
 // on icon click expand palette

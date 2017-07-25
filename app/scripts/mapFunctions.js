@@ -26,7 +26,8 @@ var projection = d3.geo.mercator()
   .translate([width / 2, height / 2]);
 
 var path = d3.geo.path()
-  .projection(projection);
+  .projection(projection)
+  .pointRadius(radius);
   
 // Set svg width & height
 var svg = d3.select('#custom-map')
@@ -126,10 +127,14 @@ function wheel(d) {
       centered = d;
     } else {
 
-      debugger
-      x = event.offsetX - ( event.target.getAttribute("width")/2);
-      y=  event.offsetY - ( event.target.getAttribute("height")/2);
- 
+      console.log(event.offsetY)
+      //console.log(event.offsetY)
+      //console.log(event.target.getAttribute("width")/2)
+      //console.log(event.target.getAttribute("height")/2)
+      x = event.offsetX -width/2 //+ ( event.target.getAttribute("width")/2);
+      y=  event.offsetY -height/2//+ ( event.target.getAttribute("height")/2);
+      //console.log(x) 
+      //console.log(y) 
       if (event.deltaY >0 && scaleWheel > 1){
       	scaleWheel = scaleWheel-1;
       }else if (event.deltaY >0 && scaleWheel <= 1 && scaleWheel >0.1){
@@ -148,8 +153,8 @@ function wheel(d) {
       */
 
   g.transition()
-      .duration(750) // rotate
-      .attr('transform', 'translate(' + x + ','+ y + ')scale(' + scaleWheel + ')');      
+      .duration(1000) // rotate
+      .attr('transform', 'translate(' + -width / 2 + ',' + -height / 2 + ')translate(' +  x + ',' +  y + ')');
 }
 function mouseover(d){
   // Highlight hovered province

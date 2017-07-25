@@ -5,6 +5,7 @@ var fillColor="white";
 var blendy="multiply";
 var labels = false;
 var data;
+var radius = 1.5;
 
 var selectedColor ;
 var scale=1400;
