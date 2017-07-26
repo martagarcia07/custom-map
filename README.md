@@ -1,6 +1,9 @@
 Custom Map Componet for CARTO
 	The component will let users change as many attributes of a data layer as possible (for example the fill and stroke of the geometries, the size, etc.). The data layer should be refreshed when any change happens.
 
+	...
+	The user may drag the map, zoom it in and out. When a point is clicked the map will zoom to fit the point as well if a country border is clicked it will zoom to a scale that fits the country. If another click event happens the map will zoom out.
+
 
 Usage
 
@@ -41,8 +44,8 @@ The following packages are always installed by the app generator:
 
 		``A Yeoman for an old school javascript web app. Word to your mother.No AMD. No frameworks. Just simple Javascript.``
 
-		Test module modifiaction 
-			jest 
+		Test module modifiaction !!
+			jasmine on phantom with jest 
 
 		Bootstrap
 		QUnit
