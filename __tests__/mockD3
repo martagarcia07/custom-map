@@ -1,0 +1,87 @@
+
+{
+			json: function(){},
+  			select:function(){
+  				return{attr:function(){return{attr:function(){return{
+  						attr:function(){return{on:function(){return{on:function(){}}}}},
+  						append:function(){return{
+  							attr:function(){return{attr:function(){return{attr:function(){return{on:function(){return{on:function(){return{call:function(){return{call:function(){return{call:function(){}}}}}}}}}}}}}}},
+  							append:function(){
+  								return {
+									classed:function(){
+										return {
+											attr:function(){
+										return {
+											attr:function(){
+												
+											}
+										}
+												
+											}
+										}
+									}
+								}
+  							}
+  						}}
+  				}}}}}
+  			},
+  			geo: {
+				mercator: function(){
+					return {scale:function(a){return{rotate:function(a){return{translate:function(a){return{
+						translate:function(a){},
+						scale:function(a){
+
+						}
+					}}}}}}}
+												
+				},
+				path:function(){
+					return {projection:function(a){return{
+						pointRadius:function(a){},
+						scale:function(a){}
+					}}}
+
+				}
+
+
+			},
+  			behavior: {
+				drag: function(){
+					return {on:function(a){
+						return {on:function(a){} }	
+					} }
+				},
+				zoom:function(){
+					return {
+						on:function(a){},
+						translate:function(a){
+							return{
+								scale:function(){
+									return{
+										scaleExtent:function(){
+											return{
+												on:function(){}
+											}
+										}
+
+									}
+								}
+							}
+						}
+					}
+				}
+
+  			},
+  			drag: function(){},
+  			scale: { 
+				linear:function(){
+  					return {domain:function(){
+  						return {clamp:function(){
+  							 return {range:function(){
+
+  							 }};
+						}};	  							
+  					}};
+  				}
+	  		}
+  		}

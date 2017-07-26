@@ -12,7 +12,7 @@ Usage
 		grunt server
 		To bootstrap your local app.
 
-		grunt test
+		npm test
 		For unittesting.
 
 		Click on the map top left icon to display the styling palette and hide it,the palette info modifications will upload automatically the map with the styling changes.
@@ -21,6 +21,9 @@ The following packages are always installed by the app generator:
 
 
 	Pre-requisites
+		node
+		npm
+		bower
 
 		https://geojson-maps.ash.ms/ 
 		Base map for country borders
@@ -38,6 +41,8 @@ The following packages are always installed by the app generator:
 
 		``A Yeoman for an old school javascript web app. Word to your mother.No AMD. No frameworks. Just simple Javascript.``
 
+		Test module modifiaction 
+			jest 
 
 		Bootstrap
 		QUnit
@@ -47,7 +52,7 @@ The following packages are always installed by the app generator:
 
 Fancy icon designed with gimp.
 
-Running grunt test will open the QUnit test page.
+
 
 Credits:
 	d3 example

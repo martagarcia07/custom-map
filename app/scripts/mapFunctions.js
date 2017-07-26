@@ -136,12 +136,9 @@ function wheel(d) {
     var x, y, k;
     // Compute centroid of the selected path
     if (d ) {
-      console.log(d)
-      console.log(d.geometry.coordinates)
       var centroid = path.centroid(d);
       x = centroid[0];
       y = centroid[1];
-      console.log(x,y)
       
       if (event.deltaY >0 && scaleWheel > 1){
       	scaleWheel = scaleWheel-1;
