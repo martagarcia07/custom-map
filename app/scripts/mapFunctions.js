@@ -52,14 +52,15 @@ svg.append('rect')
     .call(drag)
     .call(zoom);
 var g = svg.append('g');
-var effectLayer = g.append('g')
-    .classed('effect-layer', true);
+//var effectLayer = g.append('g')
+//    .classed('effect-layer', true);
 var mapLayer = g.append('g')
     .classed('map-layer', true);
 var bigText = g.append('text')
     .classed('big-text', true)
-    .attr('x', 20)
-    .attr('y', 45);
+    .style('font-size',20/scaleWheel+'px')
+    .attr('x', 280)
+    .attr('y', 230);
 
 // Get province color
 function fillFn(d){
@@ -124,11 +125,19 @@ function clicked(d) {
             .duration(750)
             .attr('transform', 'translate(' + translation +  ')scale(' + scale + ')');
     }
+    g.selectAll('text')
+        .style('font-size', function(d){return 20/scaleWheel+'px';})
+        .attr('x', x)
+        .attr('y', y);
 
 }
 function zoomed() {
-  projection.translate(d3.event.translate).scale(d3.event.scale);
-  g.selectAll("path").attr("d", path);
+    projection.translate(d3.event.translate).scale(d3.event.scale);
+    g.selectAll("path").attr("d", path);
+    g.selectAll('text')
+     .style('font-size', function(d){ return 20/scaleWheel+'px';})
+      .attr('x', x)
+      .attr('y', y);
 }
 function wheel(d) {
 	  event.preventDefault();
@@ -136,24 +145,27 @@ function wheel(d) {
     var x, y, k;
     // Compute centroid of the selected path
     if (d ) {
-      var centroid = path.centroid(d);
-      x = centroid[0];
-      y = centroid[1];
-      
-      if (event.deltaY >0 && scaleWheel > 1){
-      	scaleWheel = scaleWheel-1;
-      }else if (event.deltaY >0 && scaleWheel <= 1 && scaleWheel >0.1){
-      	scaleWheel=scaleWheel/2;      	
-      }else if (event.deltaY < 0 ){
-      	scaleWheel = scaleWheel+1;
-      }
-      centered = d;
+        var centroid = path.centroid(d);
+        x = centroid[0];
+        y = centroid[1];
+        
+        if (event.deltaY >0 && scaleWheel > 1){
+          	scaleWheel = scaleWheel-1;
+        }else if (event.deltaY >0 && scaleWheel <= 1 && scaleWheel >0.1){
+        	  scaleWheel=scaleWheel/2;      	
+        }else if (event.deltaY < 0 ){
+        	  scaleWheel = scaleWheel+1;
+        }
+        centered = d;
     } 
   
   g.transition()
 	    .duration(750) // rotate
 	    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scaleWheel + ')translate(' + -x + ',' + -y + ')');
-
+  g.selectAll('text')
+      .style('font-size', function(d){ return 20/scaleWheel+'px';})
+      .attr('x', x)
+      .attr('y', y);
 }
 function mouseover(d){
     // Highlight hovered province
@@ -162,16 +174,16 @@ function mouseover(d){
     if (labels){
       	textArt(nameFn(d));
     }
+    g.selectAll('text')
+        .style('font-size', function(d){ return 20/scaleWheel+'px';})
+        .attr('x', x)
+        .attr('y', y);    
 }
 function mouseout(d){
     // Reset province color
     mapLayer.selectAll('path')
         .style('fill', function(d){return centered && d===centered ? '#D5708B' : fillFn(d);});
-    // Remove effect text
-    effectLayer.selectAll('text').transition()
-        .style('opacity', 0)
-        .remove();
-    // Clear province name
+
     bigText.text('');
 }
 var BASE_FONT = "'Helvetica Neue', Helvetica, Arial, sans-serif";
@@ -182,34 +194,4 @@ function textArt(text){
     bigText
         .style('font-family', fontFamily)
         .text(text);
-    // Generate the positions of the text in the background
-    var positions = [];
-    var rowCount = 0;
-    var selection = effectLayer.selectAll('text')
-        .data(positions, function(d){return d.text+'/'+d.index;});
-    // Clear old ones
-    selection.exit().transition()
-        .style('opacity', 0)
-        .remove();
-    // Create text but set opacity to 0
-    selection.enter().append('text')
-        .text(function(d){return d.text;})
-        .attr('x', function(d){return d.x;})
-        .attr('y', function(d){return d.y;})
-        .style('font-family', fontFamily)
-        .style('fill', '#777')
-        .style('opacity', 0);
-    selection
-        .style('font-family', fontFamily)
-        .attr('x', function(d){return d.x;})
-        .attr('y', function(d){return d.y;});
-    // Create transtion to increase opacity from 0 to 0.1-0.5
-    // Add delay based on distance from the center of the <svg> and a bit more randomness.
-    selection.transition()
-        .delay(function(d){
-          return d.distance * 0.01 + Math.random()*1000;
-        })
-        .style('opacity', function(d){
-          return 0.1 + Math.random()*0.4;
-        });
 }
