@@ -1,5 +1,8 @@
 // on drag option
 var index=20; // the bigger the slower motion
+var x=width/2;
+var y=height/2;
+var currentScale=scale;
 var drag = d3.behavior.drag()
     .on("dragstart", function() {
     // Adapted from http://mbostock.github.io/d3/talk/20111018/azimuthal.html and updated for d3 v3
@@ -58,7 +61,7 @@ var mapLayer = g.append('g')
     .classed('map-layer', true);
 var bigText = g.append('text')
     .classed('big-text', true)
-    .style('font-size',20/scaleWheel+'px')
+    .style('font-size',20/currentScale+'px')
     .attr('x', 280)
     .attr('y', 230);
 
@@ -84,7 +87,7 @@ function strokeFn(d){
 		
 // When clicked, zoom in/out
 function clicked(d) {
-    var x, y, k;
+    var k;
     // Compute centroid of the selected path
     if (d && d.geometry.type!="MultiPolygon"  && d.geometry.type!="Polygon"){
         // if point scale to 1
@@ -110,7 +113,8 @@ function clicked(d) {
             .style('font-size', function(d){return 20/k+'px';})
             .attr('x', x)
             .attr('y', y);          
-    } else {
+        currentScale=k;
+    } else if (d){
         //if country polygon scale to fit the area
         var centroid = path.centroid(d);
         x = centroid[0];
@@ -132,22 +136,30 @@ function clicked(d) {
             .style('font-size', function(d){return 20/scale+'px';})
             .attr('x', x)
             .attr('y', y);
+        currentScale=scale;
     }
 
 
 }
 function zoomed() {
+    path = d3.geo.path()
+        .projection(projection)
+        .pointRadius(radius);
     projection.translate(d3.event.translate).scale(d3.event.scale);
     g.selectAll("path").attr("d", path);
     g.selectAll('text')
-     .style('font-size', function(d){ return d3.event.scale+'px';})
-      .attr('x', x)
-      .attr('y', y);
+        .style('font-size', function(d){ return 20/d3.event.scale+'px';})
+        .attr('x', d3.event.translate[0])
+        .attr('y', d3.event.translate[1]);
+    currentScale=d3.event.scale;
+    x=d3.event.translate[0];
+    y=d3.event.translate[1];
+
 }
 function wheel(d) {
-	  event.preventDefault();
-	  event.stopPropagation();
-    var x, y, k;
+	event.preventDefault();
+	event.stopPropagation();
+    var k;
     // Compute centroid of the selected path
     if (d ) {
         var centroid = path.centroid(d);
@@ -162,15 +174,18 @@ function wheel(d) {
         	  scaleWheel = scaleWheel+1;
         }
         centered = d;
+        g.transition()
+            .duration(750) // rotate
+            .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scaleWheel + ')translate(' + -x + ',' + -y + ')');
+        g.selectAll('text')
+            .style('font-size', function(d){ return 20/scaleWheel+'px';})
+            .attr('x', x)
+            .attr('y', y);
+        currentScale=scaleWheel;
+
     } 
   
-    g.transition()
-	    .duration(750) // rotate
-	    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scaleWheel + ')translate(' + -x + ',' + -y + ')');
-    g.selectAll('text')
-        .style('font-size', function(d){ return 20/scaleWheel+'px';})
-        .attr('x', x)
-        .attr('y', y);
+
 }
 function mouseover(d){
     // Highlight hovered province
@@ -180,7 +195,7 @@ function mouseover(d){
       	textArt(nameFn(d));
     }
     g.selectAll('text')
-        .style('font-size', function(d){ return 20/d3.event.scale+'px';})
+        .style('font-size', function(d){ return (20/currentScale>1?20/currentScale:20)+'px';})
         .attr('x', x)
         .attr('y', y);    
 }
