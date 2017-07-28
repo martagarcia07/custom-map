@@ -164,13 +164,13 @@ function wheel(d) {
         centered = d;
     } 
   
-  g.transition()
+    g.transition()
 	    .duration(750) // rotate
 	    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + scaleWheel + ')translate(' + -x + ',' + -y + ')');
-  g.selectAll('text')
-      .style('font-size', function(d){ return 20/scaleWheel+'px';})
-      .attr('x', x)
-      .attr('y', y);
+    g.selectAll('text')
+        .style('font-size', function(d){ return 20/scaleWheel+'px';})
+        .attr('x', x)
+        .attr('y', y);
 }
 function mouseover(d){
     // Highlight hovered province
@@ -180,7 +180,7 @@ function mouseover(d){
       	textArt(nameFn(d));
     }
     g.selectAll('text')
-        .style('font-size', function(d){ return 20/scaleWheel+'px';})
+        .style('font-size', function(d){ return 20/d3.event.scale+'px';})
         .attr('x', x)
         .attr('y', y);    
 }
