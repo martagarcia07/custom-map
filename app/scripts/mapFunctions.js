@@ -106,6 +106,10 @@ function clicked(d) {
         g.transition()
           .duration(750)
           .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')');
+        g.selectAll('text')
+            .style('font-size', function(d){return 20/k+'px';})
+            .attr('x', x)
+            .attr('y', y);          
     } else {
         //if country polygon scale to fit the area
         var centroid = path.centroid(d);
@@ -124,11 +128,12 @@ function clicked(d) {
         g.transition()
             .duration(750)
             .attr('transform', 'translate(' + translation +  ')scale(' + scale + ')');
+        g.selectAll('text')
+            .style('font-size', function(d){return 20/scale+'px';})
+            .attr('x', x)
+            .attr('y', y);
     }
-    g.selectAll('text')
-        .style('font-size', function(d){return 20/scaleWheel+'px';})
-        .attr('x', x)
-        .attr('y', y);
+
 
 }
 function zoomed() {
