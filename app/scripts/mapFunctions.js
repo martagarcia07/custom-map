@@ -135,7 +135,7 @@ function zoomed() {
     projection.translate(d3.event.translate).scale(d3.event.scale);
     g.selectAll("path").attr("d", path);
     g.selectAll('text')
-     .style('font-size', function(d){ return 20/scaleWheel+'px';})
+     .style('font-size', function(d){ return d3.event.scale+'px';})
       .attr('x', x)
       .attr('y', y);
 }
